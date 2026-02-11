@@ -169,7 +169,7 @@
             animation: scroll 40s linear infinite;
         }
         
-        /* MOVIMENTO CONTÍNUO MESMO COM MOUSE EM CIMA */
+        /* MOVIMENTO SEM PAUSA */
         .slide-track:hover { animation-play-state: running !important; }
 
         .slide { height: 220px; width: 300px; margin: 0 15px; display: flex; align-items: center; }
@@ -222,13 +222,17 @@
         .destination-overlay h3 { color: white; -webkit-text-fill-color: white; font-size: 2.2rem; margin-bottom: 12px; }
         .destination-overlay p { color: rgba(255,255,255,0.9); font-size: 1.1rem; font-weight: 500; }
 
-        /* --- Contato --- */
+        /* --- Contato (Botões Clicáveis) --- */
         .contact-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        
         .contact-box {
+            display: block; /* Caixa inteira clicável */
+            text-decoration: none;
             background: white; padding: 50px 40px; border-radius: 30px; width: 320px;
             box-shadow: var(--shadow); border: 2px solid transparent;
             transition: all 0.4s ease; text-align: center;
         }
+        
         .contact-box:hover { transform: translateY(-15px); border-color: var(--accent-color); box-shadow: 0 20px 40px rgba(0, 168, 255, 0.2); }
         
         .contact-icon { 
@@ -237,8 +241,12 @@
         }
         
         .contact-box h4 { font-size: 1.4rem; color: var(--text-main); -webkit-text-fill-color: var(--text-main); margin-bottom: 15px; }
-        .contact-link { color: var(--accent-color); text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; }
-        .contact-link:hover { letter-spacing: 1px; }
+        
+        /* Texto interno */
+        .contact-text-display { 
+            color: var(--accent-color); font-weight: 700; font-size: 1.2rem; transition: all 0.3s; display: block;
+        }
+        .contact-box:hover .contact-text-display { letter-spacing: 1px; }
 
         /* --- Footer --- */
         footer {
@@ -273,7 +281,6 @@
             
             .destinations-grid { grid-template-columns: 1fr; }
             
-            /* Ajuste Carrossel Mobile */
             .slide { width: 220px; height: 160px; margin: 0 10px; }
             .slider { height: 160px; }
             .slide-track { width: calc(240px * 10); } 
@@ -325,15 +332,15 @@
             <div class="slide-track">
                 <div class="slide"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona Sagrada"></div>
                 <div class="slide"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80" alt="Madrid Gran Via"></div>
-                <div class="slide"><img src="park.jpg" alt="Barcelona Park Guell"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1605218427306-0336d35274d6?auto=format&fit=crop&w=800&q=80" alt="Barcelona Park Guell"></div>
                 <div class="slide"><img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80" alt="Madrid Cibeles"></div>
-                <div class="slide"><img src="toledo.jpg" alt="Toledo Espanha"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1563693998336-93c104374b94?auto=format&fit=crop&w=800&q=80" alt="Toledo Espanha"></div>
                 
                 <div class="slide"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona Sagrada"></div>
                 <div class="slide"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80" alt="Madrid Gran Via"></div>
-                <div class="slide"><img src="park.jpg" alt="Barcelona Park Guell"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1605218427306-0336d35274d6?auto=format&fit=crop&w=800&q=80" alt="Barcelona Park Guell"></div>
                 <div class="slide"><img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80" alt="Madrid Cibeles"></div>
-                <div class="slide"><img src="toledo.jpg" alt="Toledo Espanha"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1563693998336-93c104374b94?auto=format&fit=crop&w=800&q=80" alt="Toledo Espanha"></div>
             </div>
         </div>
     </section>
@@ -366,7 +373,7 @@
             <h2 class="hidden">Experiências Exclusivas</h2>
             <div class="destinations-grid">
                 <div class="destination-card hidden">
-                    <img src="https://images.unsplash.com/photo-1579282240050-35253783a610?auto=format&fit=crop&w=800&q=80" alt="Barcelona" class="destination-img">
+                    <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona" class="destination-img">
                     <div class="destination-overlay">
                         <h3>Barcelona</h3>
                         <p>A genialidade de Gaudí, o Bairro Gótico e a brisa do Mediterrâneo.</p>
@@ -380,7 +387,7 @@
                     </div>
                 </div>
                 <div class="destination-card hidden">
-                    <img src="toledo.jpg" alt="Toledo" class="destination-img">
+                    <img src="https://images.unsplash.com/photo-1544978805-4f3640b7190b?auto=format&fit=crop&w=800&q=80" alt="Toledo" class="destination-img">
                     <div class="destination-overlay">
                         <h3>Toledo</h3>
                         <p>A cidade imperial das três culturas. Uma viagem inesquecível no tempo.</p>
@@ -394,16 +401,17 @@
         <div class="container">
             <h2 class="hidden">Vamos Planejar Sua Viagem?</h2>
             <div class="contact-wrapper hidden">
-                <div class="contact-box">
+                <a href="https://wa.me/34647861274" class="contact-box" target="_blank">
                     <i class="fab fa-whatsapp contact-icon"></i>
                     <h4>WhatsApp Profissional</h4>
-                    <a href="https://wa.me/34647861274" class="contact-link" target="_blank">+34 647 86 12 74</a>
-                </div>
-                <div class="contact-box">
+                    <span class="contact-text-display">+34 647 86 12 74</span>
+                </a>
+                
+                <a href="https://www.instagram.com/juniatours" class="contact-box" target="_blank">
                     <i class="fab fa-instagram contact-icon"></i>
                     <h4>Siga no Instagram</h4>
-                    <a href="https://instagram.com/JUNIATOURS" class="contact-link" target="_blank">@JUNIATOURS</a>
-                </div>
+                    <span class="contact-text-display">@JUNIATOURS</span>
+                </a>
             </div>
         </div>
     </section>
