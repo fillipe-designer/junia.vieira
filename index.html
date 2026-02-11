@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junia Vieira | Guia Turística Espanha | CEO VIAJESGRANVÍA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Configurações de Cores e Variáveis --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #7f8c8d;
+            --gradient-blue: linear-gradient(135deg, #004e92 0%, #00a8ff 100%);
+            --accent-color: #00a8ff;
+            --nav-bg: rgba(255, 255, 255, 0.98);
+            --shadow: 0 15px 35px rgba(0, 80, 150, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Fundo de Partículas */
+        #particles-js {
+            position: fixed; width: 100%; height: 100%;
+            top: 0; left: 0; z-index: -1; 
+            background: radial-gradient(circle at center, #ffffff 0%, #f0f7ff 100%);
+        }
+
+        /* --- Tipografia Premium --- */
+        h1, h2, h3 { 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 3rem; margin-bottom: 60px; text-align: center;
+            position: relative; padding-bottom: 20px;
+        }
+
+        h2::after {
+            content: ''; position: absolute; bottom: 0; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 5px;
+            background: var(--gradient-blue); border-radius: 10px;
+        }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .section { padding: 120px 0; }
+
+        /* Animações de Entrada */
+        .hidden { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .show { opacity: 1; transform: translateY(0); }
+
+        /* --- Botão Moderno --- */
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: var(--gradient-blue);
+            color: white;
+            border: 3px solid transparent;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0, 168, 255, 0.5);
+            position: relative;
+            z-index: 10;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.15);
+            background: white;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(0, 168, 255, 0.7);
+        }
+
+        /* --- Header / Menu --- */
+        header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: var(--nav-bg); padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo img { height: 55px; }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li a {
+            color: var(--text-main); text-decoration: none; margin-left: 35px;
+            font-weight: 600; text-transform: uppercase; font-size: 0.95rem;
+            transition: all 0.3s ease; position: relative;
+        }
+
+        .nav-links li a:hover { color: var(--accent-color); transform: translateY(-2px); }
+        .hamburger { display: none; color: var(--text-main); font-size: 1.8rem; cursor: pointer; }
+
+        /* --- Hero Section (Capa) --- */
+        #hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding-top: 140px; padding-bottom: 80px;
+            position: relative; overflow: hidden;
+        }
+
+        .hero-content { display: flex; flex-direction: column; align-items: center; gap: 25px; max-width: 900px; width: 100%; z-index: 2; }
+        
+        .hero-logo { 
+            width: auto; max-width: 300px; max-height: 140px;
+            object-fit: contain; margin-bottom: 15px; flex-shrink: 0;
+            filter: drop-shadow(0 10px 10px rgba(0, 168, 255, 0.2));
+        }
+
+        .profile-frame {
+            width: 240px; height: 240px; border-radius: 50%; padding: 8px;
+            background: var(--gradient-blue);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px; flex-shrink: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 5px solid white; }
+        
+        .hero-text h1 { font-size: 4rem; margin-bottom: 10px; line-height: 1.1; }
+        .hero-text p.role { font-size: 1.5rem; color: var(--text-main); font-weight: 500; margin-bottom: 5px; }
+        .hero-text p.locations { font-size: 1.1rem; color: var(--accent-color); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; }
+
+        /* --- CARROSSEL INFINITO --- */
+        .carousel-section {
+            padding: 60px 0; background: #f2f9ff;
+            overflow: hidden; border-top: 1px solid #e6f2ff; border-bottom: 1px solid #e6f2ff;
+        }
+
+        .slider {
+            background: transparent; height: 220px; margin: auto;
+            overflow: hidden; position: relative; width: 100%;
+        }
+
+        .slider::before, .slider::after {
+            content: ""; height: 220px; position: absolute; width: 150px; z-index: 2;
+            pointer-events: none;
+        }
+        .slider::before { left: 0; background: linear-gradient(to right, #f2f9ff 0%, transparent 100%); }
+        .slider::after { right: 0; background: linear-gradient(to left, #f2f9ff 0%, transparent 100%); }
+
+        .slide-track {
+            display: flex; width: calc(320px * 10);
+            animation: scroll 40s linear infinite;
+        }
+        
+        /* MOVIMENTO CONTÍNUO MESMO COM MOUSE EM CIMA */
+        .slide-track:hover { animation-play-state: running !important; }
+
+        .slide { height: 220px; width: 300px; margin: 0 15px; display: flex; align-items: center; }
+        .slide img { 
+            width: 100%; height: 100%; object-fit: cover; border-radius: 15px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease;
+        }
+        .slide img:hover { transform: scale(1.05); }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-330px * 5)); }
+        }
+
+        /* --- Sobre Mim --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .about-text p { margin-bottom: 25px; font-size: 1.15rem; color: var(--text-secondary); }
+        .about-text strong { color: var(--accent-color); font-weight: 700; }
+        
+        .about-stats { display: flex; gap: 40px; margin-top: 40px; }
+        .stat-box h3 { font-size: 3rem; margin: 0; line-height: 1; }
+        .stat-box p { font-size: 1rem; color: var(--text-main); font-weight: 700; letter-spacing: 1px; margin-top: 10px; }
+        
+        .about-image {
+            background-image: url('https://images.unsplash.com/photo-1558642084-fd07fae5282e?auto=format&fit=crop&w=800&q=80');
+            background-size: cover; background-position: center; height: 550px;
+            border-radius: 30px; box-shadow: var(--shadow);
+            position: relative; overflow: hidden;
+        }
+
+        /* --- Destinos --- */
+        .destinations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        
+        .destination-card {
+            position: relative; height: 480px; border-radius: 25px;
+            overflow: hidden; cursor: pointer; box-shadow: var(--shadow);
+        }
+        
+        .destination-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        
+        .destination-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0, 60, 120, 0.95) 0%, rgba(0, 80, 150, 0.2) 60%, transparent 100%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 35px;
+        }
+        
+        .destination-card:hover .destination-img { transform: scale(1.15); }
+        
+        .destination-overlay h3 { color: white; -webkit-text-fill-color: white; font-size: 2.2rem; margin-bottom: 12px; }
+        .destination-overlay p { color: rgba(255,255,255,0.9); font-size: 1.1rem; font-weight: 500; }
+
+        /* --- Contato --- */
+        .contact-wrapper { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .contact-box {
+            background: white; padding: 50px 40px; border-radius: 30px; width: 320px;
+            box-shadow: var(--shadow); border: 2px solid transparent;
+            transition: all 0.4s ease; text-align: center;
+        }
+        .contact-box:hover { transform: translateY(-15px); border-color: var(--accent-color); box-shadow: 0 20px 40px rgba(0, 168, 255, 0.2); }
+        
+        .contact-icon { 
+            font-size: 3.5rem; margin-bottom: 25px; display: inline-block;
+            background: var(--gradient-blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        .contact-box h4 { font-size: 1.4rem; color: var(--text-main); -webkit-text-fill-color: var(--text-main); margin-bottom: 15px; }
+        .contact-link { color: var(--accent-color); text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: all 0.3s; }
+        .contact-link:hover { letter-spacing: 1px; }
+
+        /* --- Footer --- */
+        footer {
+            background: #f0f7ff; padding: 50px 0; text-align: center;
+            border-top: 1px solid #e6f2ff; color: var(--text-secondary);
+        }
+        footer span { color: var(--accent-color); font-weight: 800; }
+
+        /* --- Responsividade Mobile --- */
+        @media (max-width: 992px) {
+            .hero-text h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image { height: 400px; order: -1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed; right: -100%; top: 80px; height: calc(100vh - 80px);
+                background: white; flex-direction: column; width: 100%; text-align: center;
+                transition: right 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0); padding-top: 60px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 25px 0; }
+            .hamburger { display: block; }
+            
+            h2 { font-size: 2.5rem; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .role { font-size: 1.2rem; }
+            .btn { padding: 15px 35px; font-size: 1rem; }
+            .profile-frame { width: 200px; height: 200px; }
+            
+            .destinations-grid { grid-template-columns: 1fr; }
+            
+            /* Ajuste Carrossel Mobile */
+            .slide { width: 220px; height: 160px; margin: 0 10px; }
+            .slider { height: 160px; }
+            .slide-track { width: calc(240px * 10); } 
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-240px * 5)); }
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="logo.png" alt="VIAJESGRANVÍA Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#about">Sobre Mim</a></li>
+                <li><a href="#destinations">Destinos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content hidden">
+            <img src="logo.png" alt="VIAJESGRANVÍA Logo" class="hero-logo">
+            <div class="profile-frame">
+                <img src="perfil.jpg" alt="Junia Vieira - Guia Turística" class="profile-img">
+            </div>
+            <div class="hero-text">
+                <h1>JUNIA VIEIRA</h1>
+                <p class="role">CEO VIAJESGRANVÍA | Guia Turística Profissional</p>
+                <p class="locations">ESPECIALISTA EM BARCELONA & MADRID</p>
+                <a href="#contact" class="btn">Agende Sua Experiência</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="carousel-section">
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona Sagrada"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80" alt="Madrid Gran Via"></div>
+                <div class="slide"><img src="park.jpg" alt="Barcelona Park Guell"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80" alt="Madrid Cibeles"></div>
+                <div class="slide"><img src="toledo.jpg" alt="Toledo Espanha"></div>
+                
+                <div class="slide"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=800&q=80" alt="Barcelona Sagrada"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80" alt="Madrid Gran Via"></div>
+                <div class="slide"><img src="park.jpg" alt="Barcelona Park Guell"></div>
+                <div class="slide"><img src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=80" alt="Madrid Cibeles"></div>
+                <div class="slide"><img src="toledo.jpg" alt="Toledo Espanha"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="hidden">Sua Conexão Brasil-Espanha</h2>
+            <div class="about-grid">
+                <div class="about-text hidden">
+                    <p>Olá! Sou <strong>Junia Vieira</strong>, brasileira de alma e espanhola de coração. Há mais de 20 anos, fiz da Espanha meu lar e minha paixão.</p>
+                    <p>Como CEO da <strong>VIAJESGRANVÍA</strong>, minha missão é ir além do turismo convencional. Eu ofereço uma imersão cultural autêntica, conectando a alegria brasileira com a riqueza histórica da Espanha, sempre com conforto e exclusividade.</p>
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <h3>20+</h3>
+                            <p>ANOS NA ESPANHA</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>PT/ES</h3>
+                            <p>BILÍNGUE NATIVA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="section">
+        <div class="container">
+            <h2 class="hidden">Experiências Exclusivas</h2>
+            <div class="destinations-grid">
+                <div class="destination-card hidden">
+                    <img src="https://images.unsplash.com/photo-1579282240050-35253783a610?auto=format&fit=crop&w=800&q=80" alt="Barcelona" class="destination-img">
+                    <div class="destination-overlay">
+                        <h3>Barcelona</h3>
+                        <p>A genialidade de Gaudí, o Bairro Gótico e a brisa do Mediterrâneo.</p>
+                    </div>
+                </div>
+                <div class="destination-card hidden">
+                    <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80" alt="Madrid" class="destination-img">
+                    <div class="destination-overlay">
+                        <h3>Madrid</h3>
+                        <p>Arte no Prado, a grandiosidade do Palácio Real e a energia das tapas.</p>
+                    </div>
+                </div>
+                <div class="destination-card hidden">
+                    <img src="toledo.jpg" alt="Toledo" class="destination-img">
+                    <div class="destination-overlay">
+                        <h3>Toledo</h3>
+                        <p>A cidade imperial das três culturas. Uma viagem inesquecível no tempo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="hidden">Vamos Planejar Sua Viagem?</h2>
+            <div class="contact-wrapper hidden">
+                <div class="contact-box">
+                    <i class="fab fa-whatsapp contact-icon"></i>
+                    <h4>WhatsApp Profissional</h4>
+                    <a href="https://wa.me/34647861274" class="contact-link" target="_blank">+34 647 86 12 74</a>
+                </div>
+                <div class="contact-box">
+                    <i class="fab fa-instagram contact-icon"></i>
+                    <h4>Siga no Instagram</h4>
+                    <a href="https://instagram.com/JUNIATOURS" class="contact-link" target="_blank">@JUNIATOURS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 VIAJESGRANVÍA. Todos os direitos reservados.</p>
+            <p>Exclusividade e Cultura por <span>Junia Vieira</span></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 70, "density": { "enable": true, "value_area": 1000 } },
+                "color": { "value": "#00a8ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.1 } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 180, "color": "#00a8ff", "opacity": 0.15, "width": 1 },
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "bubble": { "distance": 200, "size": 6, "duration": 2, "opacity": 0.8, "speed": 3 }, "push": { "particles_nb": 3 } }
+            },
+            "retina_detect": true
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) { entry.target.classList.add('show'); }
+            });
+        }, { threshold: 0.15 });
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>
